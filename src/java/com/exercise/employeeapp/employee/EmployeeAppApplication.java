@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class EmployeeAppApplication {
+public class EmployeeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmployeeAppApplication.class, args);
+		SpringApplication.run(EmployeeApplication.class, args);
 	}
 
 }
