@@ -44,7 +44,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return employeeId.equals(employee.employeeId) || (firstName.equals(employee.firstName) && lastName.equals(employee.lastName) && email.equals(employee.email));
+        return employeeId.equals(employee.employeeId);
     }
 
     @Override
