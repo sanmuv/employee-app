@@ -32,13 +32,11 @@ public class EmployeeController {
 
     @PostMapping
     ResponseEntity<?> saveEmployee(@RequestBody @Valid Employee employee) {
-       log.info("Save Employee API hit");
+        log.info("Save Employee API hit");
         try {
             return ResponseEntity.ok(employeeService.saveEmployee(employee));
         } catch (DuplicateEmployeeException ex) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Employee ID must be unique");
-        } catch (DataIntegrityViolationException ex) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data integrity violation: " + ex.getMessage());
         } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Please contact the API Administrator");
         }
