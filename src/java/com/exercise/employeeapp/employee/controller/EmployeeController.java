@@ -45,12 +45,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/{empid}/annual/tax/{finyearstart}")
-    ResponseEntity<?> getTaxDeductionForAllEmployees(@PathVariable @Size(max = 10, message = "Max size of Employee id is 10") String empid,
-                                                     @PathVariable @Pattern(regexp = "\\d{4}", message = "Invalid value for Financial Year") short finyearstart) {
+    ResponseEntity<?> getTaxDeductionForAllEmployees(@PathVariable String empid,
+                                                     @PathVariable short finyearstart) {
         EmployeeDetailsWithTaxInfo employeeDetailsWithTaxInfo = employeeService.getTaxInfoFor(empid, finyearstart);
 
-        if(finyearstart < LocalDate.now().getYear() - 2) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Financial year value is way past. Can only be the current FY");
+        int currentYear = LocalDate.now().getYear();
+        if(finyearstart < currentYear - 2 || finyearstart > currentYear ) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Financial year value is either in the past or in future. Can only be the current FY");
         }
 
         if(employeeDetailsWithTaxInfo.getFirstName() !=null) {
