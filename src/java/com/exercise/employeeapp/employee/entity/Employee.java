@@ -34,7 +34,7 @@ public class Employee {
     private List<@Pattern(regexp = "\\d{10}", message = "Invalid Phone number") String> phoneNumbers;
 
     @NotNull(message = "Salary is required")
-    private Double salary;
+    private Double monthlySalary;
 
     @NotNull(message ="Date of joining is required")
     private LocalDate doj;
@@ -44,7 +44,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return employeeId.equals(employee.employeeId);
+        return employeeId.equals(employee.employeeId) || (firstName.equals(employee.firstName) && lastName.equals(employee.lastName) && email.equals(employee.email));
     }
 
     @Override
@@ -92,12 +92,12 @@ public class Employee {
         this.phoneNumbers = phoneNumbers;
     }
 
-    public Double getSalary() {
-        return salary;
+    public Double getMonthlySalary() {
+        return monthlySalary;
     }
 
-    public void setSalary(Double salary) {
-        this.salary = salary;
+    public void setMonthlySalary(Double monthlySalary) {
+        this.monthlySalary = monthlySalary;
     }
 
     public String getEmployeeId() {
@@ -125,7 +125,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumbers=" + phoneNumbers +
-                ", salary=" + salary +
+                ", monthlySalary=" + monthlySalary +
                 ", doj=" + doj +
                 '}';
     }
