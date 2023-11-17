@@ -62,7 +62,7 @@ public class EmployeeService {
         double cessAmount = 0.0d;
 
         if (totalSalaryForYear > MINIMUM_YEARLY_SALARY_TO_COLLECT_CESS) {
-            cessAmount = TaxCalculator.calculateCess(totalSalaryForYear);
+            cessAmount = TaxCalculator.calculateCess(totalSalaryForYear - MINIMUM_YEARLY_SALARY_TO_COLLECT_CESS);
         }
 
         return EmployeeDetailsTaxInfoMapper.mapEmployeeDetailsTaxInfoToEmployeeDetailsWithTaxInfo(employee,
