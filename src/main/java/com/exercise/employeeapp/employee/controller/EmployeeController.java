@@ -5,8 +5,6 @@ import com.exercise.employeeapp.employee.exception.DuplicateEmployeeException;
 import com.exercise.employeeapp.employee.model.EmployeeDetailsWithTaxInfo;
 import com.exercise.employeeapp.employee.service.EmployeeService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
